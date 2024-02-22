@@ -24,11 +24,14 @@ b:Button("Fight", function()
 end)
 
 b:Button("End", function()
-    local args = {
-    [1] = game:GetService("Players").LocalPlayer
-}
+    while true do
+        wait(10)
+        local args = {
+            [1] = game:GetService("Players").LocalPlayer
+        }
 
-game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("EndBattle"):FireServer(unpack(args))
+        game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("EndBattle"):FireServer(unpack(args))
+    end
 end)
 
 b:ColorPicker("ColorPicker", Color3.fromRGB(255, 0, 0), function(color) -- Default color
