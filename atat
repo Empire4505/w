@@ -34,12 +34,26 @@ b:Button("End", function()
     end
 end)
 
-b:ColorPicker("ColorPicker", Color3.fromRGB(255, 0, 0), function(color) -- Default color
-    print(color)
+b:Button("Remove Anim", function()
+    for i, v in pairs(getgc()) do
+        if getinfo(v).name:lower():match('egg') and not getinfo(v).name:lower():match('display') then
+            old = hookfunction(v, function()
+                return wait(9e9)
+            end)
+        end
+    end
 end)
 
-b:Box("Box", "number", function(value) -- "number" or "string"
-    print(value)
+
+b:Button("Hatch", function()
+    while true do
+        wait()
+        local args = {
+            [1] = "4"
+        }
+
+        game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PlayerPressedKeyOnEgg"):FireServer(unpack(args))
+    end
 end)
 
 -- Commented out for now, since DestroyGui will immediately close the GUI
