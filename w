@@ -10,38 +10,25 @@ b:Label("Pretty Useless NGL",{
     BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
 }) 
 
-b:Button("Button", function()
+b:Button("Fight", function()
     while true do
         wait(5)
         local args = {
             [1] = "Fight",
-            [2] = 4,
-            [3] = 4
+            [2] = 1,
+            [3] = 1
         }
 
         game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("AutoFight"):FireServer(unpack(args))
     end
 end)
 
-b:Toggle("Toggle", function(bool)
-    shared.toggle = bool
-    print(shared.toggle)
-end)
+b:Button("End", function()
+    local args = {
+    [1] = game:GetService("Players").LocalPlayer
+}
 
-b:Slider("Slider", {
-    min = 10; -- min value of the slider
-    max = 50; -- max value of the slider
-    precise = true; -- max 2 decimals
-}, function(value)
-    print(value)
-end)
-
-b:Dropdown("Dropdown", {"A", "B", "C"}, true, function(mob) -- true/false, replaces the current title "Dropdown" with the option that t
-    print(mob)
-end)
-
-b:Bind("Bind", Enum.KeyCode.C, function() -- Default bind
-    print("Yes")
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("EndBattle"):FireServer(unpack(args))
 end)
 
 b:ColorPicker("ColorPicker", Color3.fromRGB(255, 0, 0), function(color) -- Default color
