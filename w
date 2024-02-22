@@ -15,8 +15,8 @@ b:Button("Button", function()
         wait(5)
         local args = {
             [1] = "Fight",
-            [2] = 1,
-            [3] = 1
+            [2] = 4,
+            [3] = 4
         }
 
         game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("AutoFight"):FireServer(unpack(args))
