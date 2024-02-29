@@ -34,18 +34,17 @@ b:Button("End", function()
     end
 end)
 
-b:Button("Defeat Dummies", function(state)
-    getfenv().xp = (state and true or false)
-while getfenv().xp do
-    wait()
-for i,v in pairs(workspace.PetTrainingStands:GetDescendants()) do
-if v.Name == "Dummy" and v.Parent.ClassName == "Model" and game.Players.LocalPlayer:DistanceFromCharacter(Vector3.new(v.WorldPivot.X,v.WorldPivot.Y,v.WorldPivot.Z)) < 30 then
-game:GetService("ReplicatedStorage").Events.PlayerDefeatedTrainingDummy:FireServer(v.Parent.Parent.Name, v.Parent.Name)
-end
-end
-end
+b:Button("Defeat Dummies", function()
+    while true do
+        wait()
+        
+        for i, v in pairs(workspace.PetTrainingStands:GetDescendants()) do
+            if v.Name == "Dummy" and v.Parent.ClassName == "Model" and game.Players.LocalPlayer:DistanceFromCharacter(Vector3.new(v.WorldPivot.X, v.WorldPivot.Y, v.WorldPivot.Z)) < 30 then
+                game:GetService("ReplicatedStorage").Events.PlayerDefeatedTrainingDummy:FireServer(v.Parent.Parent.Name, v.Parent.Name)
+            end
+        end
+    end
 end)
-
 
 b:Button("Rejoin", function()
 game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
