@@ -37,12 +37,12 @@ end)
 b:Button("Defeat Dummies", function()
     while true do
         wait()
-        
-        for i, v in pairs(workspace.PetTrainingStands:GetDescendants()) do
-            if v.Name == "Dummy" and v.Parent.ClassName == "Model" and game.Players.LocalPlayer:DistanceFromCharacter(Vector3.new(v.WorldPivot.X, v.WorldPivot.Y, v.WorldPivot.Z)) < 30 then
-                game:GetService("ReplicatedStorage").Events.PlayerDefeatedTrainingDummy:FireServer(v.Parent.Parent.Name, v.Parent.Name)
-            end
-        end
+        local args = {
+            [1] = "5",
+            [2] = "3"
+        }
+
+        game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PlayerDefeatedTrainingDummy"):FireServer(unpack(args))
     end
 end)
 
