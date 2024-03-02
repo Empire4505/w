@@ -36,7 +36,7 @@ end)
 
 b:Button("Defeat Dummies", function()
     while true do
-        wait()
+        wait(2)
         local args = {
             [1] = "5",
             [2] = "3"
