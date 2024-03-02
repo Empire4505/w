@@ -15,7 +15,7 @@ b:Button("Fight", function()
         wait(2.5)
         local args = {
             [1] = "Fight",
-            [2] = 4,
+            [2] = 5,
             [3] = 4
         }
 
